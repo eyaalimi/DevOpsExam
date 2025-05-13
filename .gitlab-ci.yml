@@ -1,0 +1,24 @@
+stages:
+  - build
+  - test
+  - deploy
+
+# Étape de build : construire l'image Docker
+build:
+  stage: build
+  script:
+    - docker build -t my-node-app:v1 .
+
+# Étape de test : exécuter les tests avec Mocha ou Jest
+test:
+  stage: test
+  script:
+    - npm install
+    - npm test  # Exécuter les tests avec Mocha ou Jest
+
+# Étape de déploiement : simulation du déploiement
+deploy:
+  stage: deploy
+  script:
+    - echo "Deploying..."
+
