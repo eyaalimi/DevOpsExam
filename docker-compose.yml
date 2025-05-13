@@ -1,0 +1,28 @@
+version: '3.3'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8086:8086"
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - db
+
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  pg_data:
+
